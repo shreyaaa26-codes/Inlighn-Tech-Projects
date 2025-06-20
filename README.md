@@ -1,4 +1,4 @@
-# Inlighn-Tech-Projects
+# Inlighn-Tech-Projects (2025)
 
-Offensive Cybersecurity Intern (2025)
-          Intern ID - ITID0999
+Offensive Cybersecurity Intern 
+(ID - ITID0999)
