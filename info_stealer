@@ -1,0 +1,60 @@
+import platform
+import socket
+import uuid
+import re
+import pyperclip
+
+# Simulate decryption of browser passwords
+def get_sample_browser_passwords():
+    # Simulated data
+    return [
+        {"profile": "Default", "url": "https://example.com", "username": "user1", "password": "pass123"},
+        {"profile": "Profile 1", "url": "https://another.com", "username": "admin", "password": "admin@2024"}
+    ]
+
+# Read clipboard safely
+def capture_clipboard():
+    try:
+        content = pyperclip.paste()
+        return content
+    except Exception as e:
+        print(f"Error reading clipboard: {e}")
+        return None
+
+# Get basic system info
+def get_system_info():
+    try:
+        return {
+            "OS": platform.system(),
+            "OS Version": platform.version(),
+            "Machine": platform.machine(),
+            "Hostname": socket.gethostname(),
+            "Local IP": socket.gethostbyname(socket.gethostname()),
+            "MAC Address": ':'.join(re.findall('..', '%012x' % uuid.getnode())),
+            "Processor": platform.processor()
+        }
+    except Exception as e:
+        print(f"Error fetching system info: {e}")
+        return {}
+
+# Main execution
+if __name__ == "__main__":
+    print("Simulated Browser Passwords:")
+    for cred in get_sample_browser_passwords():
+        print(f"Profile: {cred['profile']}")
+        print(f"URL: {cred['url']}")
+        print(f"Username: {cred['username']}")
+        print(f"Password: {cred['password']}")
+        print("-" * 40)
+
+    print("\nClipboard Content:")
+    clipboard = capture_clipboard()
+    if clipboard:
+        print(clipboard)
+    else:
+        print("Nothing found in clipboard.")
+
+    print("\nSystem Information:")
+    sysinfo = get_system_info()
+    for key, value in sysinfo.items():
+        print(f"{key}: {value}")
